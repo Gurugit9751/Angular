@@ -1,0 +1,8 @@
+HELP.md
+bin/
+.settings/
+.project
+.history
+### VS Code ###
+.vscode/
+/.metadata/

@@ -1,0 +1,89 @@
+<!-- Oneway/Twoway selectror tab -->
+<div class="tab">
+  <button id="oneway" [ngClass]="{'active':search.oneway}" (click)="updateBookingType(true)">One Way</button>
+  <button id="twoway" [ngClass]="{'active':!search.oneway}" (click)="updateBookingType(false)">Return</button>
+</div>
+
+<!-- User Inputs -->
+<div class="userinputs">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <!-- <label for="">From</label> -->
+      <!-- Well Datalist does the search and  select trick but unsupported in safari.-->
+      <input type="text" class="form-control" required placeholder="Enter Origin City"
+        [ngClass]="{ 'is-invalid': submitted && f.originCity.errors }" autocomplete="off"
+        (focus)="searchForm.get('originCity').setValue('')" formControlName="originCity" />
+
+      <div *ngIf="submitted && f.originCity.errors" class="invalid-feedback">
+        <div *ngIf="f.originCity.errors.required"><sup>*</sup>Origin city is required</div>
+      </div>
+    </div>
+    <!-- Destination Input -->
+    <div class="form-group">
+      <!-- <label for="">Destination</label> -->
+
+      <input type="text" class="form-control" required placeholder="Enter Destination City"
+        [ngClass]="{ 'is-invalid': submitted && f.destinationCity.errors }" autocomplete="off"
+        (focus)="searchForm.get('destinationCity').setValue('')" formControlName="destinationCity"
+        name="destinationCity" />
+
+      <div *ngIf="submitted && f.destinationCity.errors" class="invalid-feedback">
+        <div *ngIf="f.destinationCity.errors.required"><sup>*</sup>Destination city is required</div>
+      </div>
+    </div>
+    <!-- Departure Date -->
+    <div class="form-group">
+      <!-- <label for="">Departure Date</label> -->
+
+      <input type="date" class="form-control" required data-placeholder="Departure Date" id="departdate"
+        placeholder="YYYY-MM-DD" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="departureDate" min="2020-01-01"
+        max="2022-01-01" required aria-required="true" formControlName="departureDate"
+        [ngClass]="{ 'is-invalid': submitted && f.departureDate.errors }" />
+
+      <div *ngIf="submitted && f.departureDate.errors" class="invalid-feedback">
+        <div *ngIf="f.departureDate.errors.required"><sup>*</sup>Depauture date is required</div>
+      </div>
+    </div>
+    <!-- Return Date -->
+    <div class="form-group">
+
+      <div *ngIf="!search.oneway">
+        <!-- <label for="">Return Date</label> -->
+
+        <input type="date" class="form-control" required data-placeholder="Return Date" id="returndate"
+          placeholder="YYYY-MM-DD" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="returnDate" min="2020-01-01"
+          max="2022-01-01" aria-required="true" formControlName="returnDate"
+          [ngClass]="{ 'is-invalid': submitted && f.departureDate.errors }" />
+        <div *ngIf="submitted && f.returnDate.errors" class="invalid-feedback">
+          <div *ngIf="f.returnDate.errors.required"><sup>*</sup>Return date is required</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Number of passengers -->
+    <div class="form-group">
+      <!-- <label for="">Persons</label> -->
+
+      <input type="number" class="form-control" required min=1 formControlName="passengers" placeholder="Passengers"
+        id="passengers" name="passengers" />
+
+      <div *ngIf="submitted && f.passengers.errors" class="invalid-feedback">
+        <div *ngIf="f.passengers.errors.required"><sup>*</sup> Passenger is required</div>
+      </div>
+    </div>
+    <!-- Submit -->
+    <div class="form-group">
+      <input type="submit" id="search" name="searchbtn" />
+    </div>
+
+    <div class="form-group" id="refine">
+      <h4>Refine Flight Search</h4>
+      <p>Rs.{{f.refine.value}}</p>
+      <input type="range" id="refine" formControlName="refine" steps="10" name="points" min="500" max="10000"
+        (change)="sliderChangeEvent($event)" />
+    </div>
+
+  </form>
+</div>
+
+<!-- Refine search -->

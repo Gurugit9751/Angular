@@ -1,0 +1,106 @@
+div ul{
+    color:white;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+label{
+    color: #f1f1f1;
+}
+
+div ul li{
+padding:10px;
+}
+
+div.suggestion ul:after{
+    text-align: center;
+    width:200px;
+    position: absolute;
+    margin-left:0.3em;
+    background:gray;
+}
+li:hover{
+    background: lightgray;
+    color:black;
+    cursor: pointer;
+}
+
+div.suggestion{
+    text-align: center;
+    width:200px;
+    position: absolute;
+    margin-left:0.3em;
+    background:gray;
+}
+input{
+    display:block;
+    margin:5px;
+    width:91%;
+    text-transform: capitalize;
+}
+input[type='submit']{
+    width:40%;
+    background: #1976D2;
+}
+input[type='range']{
+    width:75%;
+}
+    ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+    ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+    ::-webkit-datetime-edit-day-field:not([aria-valuenow]), {
+        color: transparent;
+}
+input[type="date"]::before { 
+	content: attr(data-placeholder);
+    width: 100%;
+    color:grey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before { display: none }
+#refine{
+    margin: 5px;
+    color: #827f7f;
+    padding: 10px;
+    border: 1px solid #aba8a8;
+}
+
+@media screen and (max-width: 600px){
+    #refine{
+    margin:5px;
+    color:grey;
+    }
+}
+div.tab{
+    overflow: hidden;
+}
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 18px;
+    transition: 0.3s;
+    border-radius: 16px 14px 0px 0px;
+    border: 1px solid gray;
+}
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #bdc1c3;
+    color: #211f1f;
+    border-radius: 10px 10px 0px 0px;
+    border: 1px solid gray;
+}
+.invalid-feedback{
+    padding-left: 8px;
+    color: red;
+    font-size: 12px;
+}

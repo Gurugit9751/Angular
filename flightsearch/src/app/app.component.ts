@@ -45,7 +45,8 @@ export class AppComponent {
   }
 
   public swapLoading(loading: boolean) {
-    console.log('Swapping', loading)
+    console.log('Swapping', loading);
     this.loading = loading;
   }
+
 }

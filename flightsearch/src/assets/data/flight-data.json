@@ -2,55 +2,107 @@
 	"flights": [
 		{
 			"flightNo": "AL-202",
-			"origin": "kolkata",
-			"destination": "mumbai",
-			"orgincode":"kol",
-			"descode":"mum",
+			"origin": "mumbai",
+			"destination": "delhi",
+			"orgincode":"mum",
+			"descode":"del",
 			"time": {
-				"depart": "2020-01-30 12:01:00",
-				"arrive": "2020-01-31 02:30:00"
+				"depart": "2020-01-30 06:15:00",
+				"arrive": "2020-01-30 07:30:00"
 			},
-			"date": "2020-01-30 01:02:03",
+			"date": "2020-01-30 06:00:03",
 			"amount": "1200.00"
 		},
 		{
-			"flightNo": "AL-203",
-			"origin": "kolkata",
+			"flightNo": "AL-204",
+			"origin": "delhi",
 			"destination": "mumbai",
-			"orgincode":"kol",
+			"orgincode":"del",
 			"descode":"mum",
 			"time": {
-				"depart": "2020-01-30 01:00:00",
-				"arrive": "2020-01-30 03:00:00"
-			},
-			"date": "2020-01-30 01:02:03",
-			"amount": "2100.00"
-		},
-		{
-			"flightNo": "AL-206",
-			"origin": "kolkata",
-			"destination": "mumbai",
-			"orgincode":"kol",
-			"descode":"mum",
-			"time": {
-				"depart": "2020-01-30 08:00:00",
-				"arrive": "2020-01-30 10:30:00"
-			},
-			"date": "2020-01-30 01:02:03",
-			"amount": "990.00"
-		},
-		{
-			"flightNo": "AL-206",
-			"origin": "mumbai",
-			"destination": "kolkata",
-			"orgincode":"mum",
-			"descode":"kol",
-			"time": {
-				"depart": "2020-01-31 12:00:00",
+				"depart": "2020-01-31 11:15:00",
 				"arrive": "2020-01-31 01:30:00"
 			},
-			"date": "2020-01-31 01:02:03",
-			"amount": "1135.00"
+			"date": "2020-01-31 11:00:03",
+			"amount": "1150.00"
+		},
+		{
+			"flightNo": "Indigo",
+			"origin": "mumbai",
+			"destination": "delhi",
+			"orgincode":"mum",
+			"descode":"del",
+			"time": {
+				"depart": "2020-01-30 08:15:00",
+				"arrive": "2020-01-30 09:00:00"
+			},
+			"date": "2020-01-30 08:00:03",
+			"amount": "1450.00"
+		},
+		{
+			"flightNo": "Indigo",
+			"origin": "delhi",
+			"destination": "mumbai",
+			"orgincode":"del",
+			"descode":"mum",
+			"time": {
+				"depart": "2020-01-31 08:15:00",
+				"arrive": "2020-01-31 09:30:00"
+			},
+			"date": "2020-01-31 07:00:03",
+			"amount": "1350.00"
+		},
+		{
+			"flightNo": "Air-Asia",
+			"origin": "mumbai",
+			"destination": "delhi",
+			"orgincode":"mum",
+			"descode":"del",
+			"time": {
+				"depart": "2020-01-30 10:00:00",
+				"arrive": "2020-01-30 10:45:00"
+			},
+			"date": "2020-01-30 09:00:03",
+			"amount": "2250.00"
+		},
+		{
+			"flightNo": "Air-Asia",
+			"origin": "delhi",
+			"destination": "mumbai",
+			"orgincode":"del",
+			"descode":"mum",
+			"time": {
+				"depart": "2020-01-31 06:15:00",
+				"arrive": "2020-01-31 08:30:00"
+			},
+			"date": "2020-01-31 05:00:03",
+			"amount": "2055.00"
+		},
+		{
+			"flightNo": "Air-India",
+			"origin": "mumbai",
+			"destination": "delhi",
+			"orgincode":"mum",
+			"descode":"del",
+			"time": {
+				"depart": "2020-01-30 06:00:00",
+				"arrive": "2020-01-30 08:45:00"
+			},
+			"date": "2020-01-30 04:00:03",
+			"amount": "2750.00"
+		},
+		{
+			"flightNo": "Air-Jet",
+			"origin": "mumbai",
+			"destination": "delhi",
+			"orgincode":"mum",
+			"descode":"del",
+			"time": {
+				"depart": "2020-01-30 10:10:00",
+				"arrive": "2020-01-30 11:45:00"
+			},
+			"date": "2020-01-30 08:00:03",
+			"amount": "3150.00"
 		}
 	]
 }

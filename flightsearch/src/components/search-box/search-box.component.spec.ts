@@ -47,5 +47,4 @@ describe('SearchBoxComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('form')).toBeTruthy();
   }));
-
 });

@@ -10,6 +10,7 @@ import 'rxjs/add/operator/take';
 import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'search-box',
   templateUrl: './search-box.component.html',
   styleUrls: ['./search-box.component.css']
@@ -19,14 +20,14 @@ export class SearchBoxComponent implements OnInit {
   @Output() onSearchResults = new EventEmitter<SearchResponse>();
   @Output() loadingComponent = new EventEmitter<boolean>();
 
-  //page variables
-  private search$ = new Subject<BookingInformation>();
-  private flights$: Observable<Flights[]>;
+  // // page variables
+  // private search$ = new Subject<BookingInformation>();
+  // private flights$: Observable<Flights[]>;
 
   searchForm: FormGroup;
 
   refineSearch = new FormControl();
-  isFormValid: boolean = false;
+  isFormValid = false;
   filteredOriginCities: string[] = [];
   filteredDestinationCities: string[] = [];
   totalCitiesListedOnServer: string[] = [];
@@ -37,6 +38,7 @@ export class SearchBoxComponent implements OnInit {
 
     this.search = {
       departureDate: '',
+      returnDate: '',
       destinationCity: '',
       originCity: '',
       orgincode: '',
@@ -54,7 +56,7 @@ export class SearchBoxComponent implements OnInit {
         originCity: ['', Validators.required],
         destinationCity: ['', Validators.required],
         departureDate: ['', Validators.required],
-        returnDate: ['', Validators.required],
+        returnDate: [''],
         passengers: [1, Validators.required],
         refine: [500]
       }
@@ -66,52 +68,56 @@ export class SearchBoxComponent implements OnInit {
 
   /**
     * Check validation of form and proceed for search
-    * @param formInputs 
+    * @param formInputs
     */
   public onSubmit(): void {
     this.submitted = true;
     if (this.searchForm.invalid) {
       return;
-    }
-    else {
+    } else {
       this.searchClickHandler(this.searchForm.value);
     }
   }
 
 
   /**
-   * 
+   *
    * Updates the booking type i.e one way/ two way flight.
-   * @param oneway 
+   * @param oneway
    */
   public updateBookingType(oneway: boolean): void {
     this.search.oneway = oneway;
+    this.searchClickHandler(this.searchForm.value);
   }
 
 
   /**
    * Search for flights based on parameters provided.
    * The magic happens here :)
-   * @param searchParams 
+   * @param searchParams
    */
   public searchClickHandler(searchParams: BookingInformation): void {
-    console.log('Search click handler params', searchParams)
+    console.log('Search click handler params', searchParams);
     this.loadingComponent.emit(true);
-    if (!searchParams.returnDate) {
+    if (!searchParams.returnDate || this.search.oneway === true) {
       console.warn('no return');
-
       this.performSearch(searchParams).subscribe((flights: Flights[]) => {
-        const searhResults: SearchResponse = { oneWayFlights: flights, oneway: true, returningFlights: [], bookingInfo: searchParams }
+        const searhResults: SearchResponse = {
+          oneWayFlights: flights,
+          oneway: true,
+          returningFlights: [],
+          bookingInfo: searchParams
+        };
         this.onSearchResults.emit(searhResults);
         this.loadingComponent.emit(false);
       });
-    }
-    else {
-      //first check for one way then for the other
+    } else {
+      // first check for one way then for the other
       const returnSearchParams: BookingInformation = {
         originCity: searchParams.destinationCity,
         destinationCity: searchParams.originCity,
         departureDate: searchParams.returnDate,
+        returnDate: searchParams.returnDate,
         orgincode: searchParams.orgincode,
         descode: searchParams.descode,
         refine: searchParams.refine,
@@ -132,13 +138,12 @@ export class SearchBoxComponent implements OnInit {
         this.onSearchResults.emit(searchResults);
         this.loadingComponent.emit(false);
       });
-
     }
   }
 
   /**
    * Perform the search from service based on params
-   * @param searchParams 
+   * @param searchParams
    */
   private performSearch(searchParams: BookingInformation) {
     return this.find.searchFlightAvailability(searchParams);

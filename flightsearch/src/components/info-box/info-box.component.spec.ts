@@ -17,8 +17,15 @@ describe('InfoBoxComponent', () => {
     fixture = TestBed.createComponent(InfoBoxComponent);
     component = fixture.componentInstance;
     component.queriedData = {
-      originCity: '', destinationCity: '', orgincode: '', 
-      descode: '', oneway: true, refine: 10000, departureDate: '', returnDate: '', passengers: 1
+      originCity: '',
+      destinationCity: '',
+      orgincode: '',
+      descode: '',
+      oneway: true,
+      refine: 10000,
+      departureDate: '',
+      returnDate: '',
+      passengers: 1
     };
     fixture.detectChanges();
   });

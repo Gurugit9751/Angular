@@ -15,14 +15,12 @@ export class FlightDetailsCardComponent implements OnInit, OnChanges {
   // page variables
   bookingIcons: string;
   constructor() {
-    this.bookingIcons = `./assets/img/aero.jpg`,
-    console.warn('results', this.searchResults);
+    this.bookingIcons = `./assets/img/aero.jpg`;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   ngOnChanges() {
-    console.log('testOnChanges',this.searchResults);
+    console.log('OnChangesData', this.searchResults);
   }
 }

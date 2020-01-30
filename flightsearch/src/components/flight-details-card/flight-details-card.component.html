@@ -1,5 +1,5 @@
 <div class="info-box" *ngIf="searchResults.bookingInfo.destinationCity && searchResults!==undefined">
-  <info-box [queriedData]="searchResults.bookingInfo"></info-box>
+  <info-box [queriedData]="searchResults.bookingInfo" [onewayStatus] ="searchResults.oneway" ></info-box>
 </div>
 
 <div *ngFor="let flight of searchResults.oneWayFlights;let i=index">
@@ -19,7 +19,7 @@
 </div>
 
 <div class="flightCards" *ngFor="let flight of searchResults.returningFlights;let i=index">
-  <div *ngIf="!searchResults.bookingInfo.oneway && searchResults.returningFlights[i] !== undefined && searchResults.oneWayFlights[i]!==undefined">
+  <div *ngIf="!searchResults.oneway && searchResults.returningFlights[i] !== undefined && searchResults.oneWayFlights[i]!==undefined">
     <div class="onwardDetails">
       <h1>Rs. {{searchResults.oneWayFlights[i].amount}}</h1>
       <sub>{{searchResults.oneWayFlights[i].flightNo}}</sub>

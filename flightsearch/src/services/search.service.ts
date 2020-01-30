@@ -9,7 +9,9 @@ import 'rxjs/add/observable/of';
 
 const apiUrl = `./assets/data/flight-data.json`;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SearchService {
 
   constructor(private http: HttpClient) { }
@@ -22,23 +24,28 @@ export class SearchService {
     // bring the data
     // sort the data
     // search the data
-    console.warn("params in service", searchParams)
+    console.warn('params in service', searchParams);
     return this.http.get(apiUrl)
       .pipe(
         map(data => this.searchAndSort(data, searchParams)),
         catchError(error => Observable.throw(error))
-      )
+      );
   }
 
   /**
    * Gets the cities available for search from server.
    * NOTE: Usually server side code provides a REST api
-   * to get teh cities availablr for search thereby reducing 
+   * to get teh cities availablr for search thereby reducing
    * client side dependency. Thin client approach :)
    */
   public getCitiesListedOnServer(): Observable<string[]> {
     return this.http.get(apiUrl)
-      .pipe(map(data => this.extractCities(data)), catchError(error => Observable.throw(error)))
+      .pipe(
+        map(data => this.extractCities(data)
+        ),
+        catchError(
+          error => Observable.throw(error))
+      );
   }
 
   /**
@@ -65,6 +72,7 @@ export class SearchService {
    */
   private searchAndSort(data: any, searchParams: BookingInformation): Flights[] {
     console.log('raw data"', data);
+    // tslint:disable-next-line:radix
     data.flights.map(x => x.amount = parseInt(x.amount));
     const allFlights: Flights[] = data.flights;
     return this.getMatchingItemsFromArray(this.sortFlightArray(allFlights), searchParams);

@@ -4,8 +4,8 @@ export interface BookingInformation {
     orgincode: string;
     descode: string;
     departureDate: string;
-    returnDate?: string;
+    returnDate: string;
     passengers: number;
     oneway: boolean;
-    refine?: number;
-};
+    refine: number;
+}

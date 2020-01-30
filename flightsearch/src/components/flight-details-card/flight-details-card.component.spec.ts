@@ -19,8 +19,14 @@ describe('FlightDetailsCardComponent', () => {
     component = fixture.componentInstance;
     component.searchResults = {
       bookingInfo: {
-        originCity: '', destinationCity: '', orgincode: '', descode: '',
-        oneway: true, refine: 10000, departureDate: '', returnDate: '', passengers: 1
+        originCity: '',
+        destinationCity: '',
+        orgincode: '', descode: '',
+        oneway: true,
+        refine: 10000,
+        departureDate: '',
+        returnDate: '',
+        passengers: 1
       },
       oneway: true, oneWayFlights: [], returningFlights: []
     };
@@ -32,6 +38,7 @@ describe('FlightDetailsCardComponent', () => {
     expect(component).toBeTruthy();
   });
   it(`should have a info-box component`, async(() => {
+    // tslint:disable-next-line:no-shadowed-variable
     const fixture = TestBed.createComponent(FlightDetailsCardComponent);
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('info-box')).toBeDefined();
